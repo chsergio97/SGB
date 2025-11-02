@@ -1,0 +1,52 @@
+.hero-section {
+  background-color: #D4AF37;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero-text h2 {
+  font-size: 40px;
+  color: #1A1A1A;
+}
+
+.hero-text p {
+  font-size: 20px;
+  color: #4B5563;
+}
+
+.hero-image img {
+  width: 250px;
+}
+
+.books-section {
+  background-color: F5F3E7;
+  padding: 60px;
+  text-align: center;
+}
+
+.book-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.book-gallery img {
+  width: 120px;
+  border: 10px solid #1E3A8A;
+  border-radius: 8px;
+}
+
+.about-section {
+  background-color: #1E3A8A;
+  color: white;
+  padding: 60px;
+  text-align: center;
+}

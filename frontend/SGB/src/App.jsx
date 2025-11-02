@@ -1,43 +1,52 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
-  const [mensaje, setMensaje] = useState('Cargando...')
+import Footer from "./components/footer";
+import NavbarMain from "./components/navbarmain";
+import NavbarMenu from "./components/navbarmenu";
+import Home from "./screens/Home";
+import Login from "./screens/Login";
+import Signup from "./screens/Signup";
+import Menu from "./screens/Menu";
+import Book from "./screens/Book"; 
 
-  useEffect(() =>{
-    fetch('/api')
-    .then(res => res.json())
-    .then(data => setMensaje(data.message))
-    .catch(err => console.error(err))
-  },[])
+function AppContent() {
+  const location = useLocation();
+  const { pathname } = location;
+  console.log("Current pathname:", pathname);
+
+  const showMainNavbar = pathname === "/";
+  const hideAllNavbar = ["/login", "/signup"].includes(pathname);
+  const showNewNavbar = ["/menu", "/libros", "/reserva", "/micuenta", "/configuracion"].includes(pathname);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React + Express</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          {mensaje}
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {showMainNavbar && <NavbarMain />}
+      {showNewNavbar && <NavbarMenu />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/libros" element={<Book />} />
+        <Route path="/reserva" element={<Book />} />
+        <Route path="/micuenta" element={<Book />} />
+        <Route path="/configuracion" element={<Book />} />
+
+
+
+      </Routes>
+
+      {!hideAllNavbar && <Footer />}
     </>
-  )
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
