@@ -1,15 +1,15 @@
 import React from 'react';
-import './Book.css';
+import '../Book/Book.css';
 
 const Book = () => {
   return (
     <div className="book-page">
-      <div className="book-content">
+      <main className="book-main">
         <header className="header">
           <h1 className="titulo">Buscar libro</h1>
         </header>
 
-        <main className="contenido">
+        <section className="contenido">
           <div className="buscador">
             <input
               type="text"
@@ -22,8 +22,8 @@ const Book = () => {
           <section className="resultados">
             <h2 className="subtitulo">Resultados...</h2>
           </section>
-        </main>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };

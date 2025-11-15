@@ -1,8 +1,17 @@
-body {
+/* --- Estructura base de toda la app --- */
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: "Comic Sans MS", sans-serif;
-  scroll-behavior: smooth;
+  padding: 0;
 }
-.navbar, .footer {
-  display: block;
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* asegura pantalla completa */
+}
+
+/* El contenido principal crece y empuja el footer hacia abajo */
+main, .contenido-principal {
+  flex: 1;
 }

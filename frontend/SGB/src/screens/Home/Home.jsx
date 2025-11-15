@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";   //descargar npm install framer-motion
-import "../screens/Main.css";
+import '../Home/Main.css'
 
 export default function Home() {
   return (
