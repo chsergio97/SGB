@@ -10,6 +10,9 @@ import Login from "./screens/Login/Login";
 import Signup from "./screens/Signup/Signup";
 import Menu from "./screens/Menu/Menu";
 import Book from "./screens/Book/Book";
+import Reservation from "./screens/Reservation/Reservation";
+import Account from "./screens/Account/Account";
+import Settings from "./screens/Settings/Settings";
 
 function AppContent() {
   const location = useLocation();
@@ -17,7 +20,7 @@ function AppContent() {
 
   const showMainNavbar = pathname === "/";
   const hideNavAndFooter = pathname === "/login" || pathname === "/signup";
-  const showNewNavbar = ["/menu", "/libros", "/reserva", "/micuenta", "/configuracion"].includes(pathname);
+  const showNewNavbar = ["/menu", "/libros", "/reservas", "/micuenta", "/configuracion"].includes(pathname);
 
   return (
     <>
@@ -34,9 +37,9 @@ function AppContent() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/menu" element={<Menu />} />
         <Route path="/libros" element={<Book />} />
-        <Route path="/reserva" element={<Book />} />
-        <Route path="/micuenta" element={<Book />} />
-        <Route path="/configuracion" element={<Book />} />
+        <Route path="/reservas" element={<Reservation />} />
+        <Route path="/micuenta" element={<Account />} />
+        <Route path="/configuracion" element={<Settings />} />
       </Routes>
 
       {/* 🔥 Footer solo se muestra si no estamos en login/signup */}

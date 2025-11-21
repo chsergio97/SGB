@@ -1,0 +1,118 @@
+:root {
+  --bg: #f6f0dc;
+  --text: #1e1e1e;
+  --muted: #555;
+  --primary: #2b5dba;
+  --card: #ffffff;
+  --border: #e0e0e0;
+}
+
+/* Base para que el contenido quede centrado sin verse pegado a header/footer */
+.page-wrap {
+  min-height: calc(100vh - 120px); /* ajusta si tu header/footer tienen otra altura */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0; /* espacio vertical respecto al navbar y footer */
+  background: var(--bg);
+}
+
+/* Contenedor de configuración, similar a account-container */
+.settings-container {
+  width: 760px;
+  max-width: 92vw; /* se ajusta en móviles */
+  padding: 1.5rem;
+  background: var(--bg);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.settings-title {
+  margin: 0;
+  text-align: center;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  font-size: 2.5rem;
+  color: #2b2b2b;
+}
+
+/* Formulario */
+.settings-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.form-label {
+  justify-self: end;
+  color: var(--muted);
+  font-weight: 600;
+  padding-right: 0.5rem;
+  text-align: right;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Botones y acciones */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.save-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #2b5dba;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+.save-btn:hover {
+  background: #1f4a9e;
+}
+
+.back-link {
+  color: #2b5dba;
+  text-decoration: none;
+  font-weight: 600;
+}
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: adaptar a pantallas pequeñas */
+@media (max-width: 860px) {
+  .settings-container {
+    width: 90vw;
+    padding: 1rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .form-label {
+    justify-self: start;
+    text-align: left;
+  }
+}
