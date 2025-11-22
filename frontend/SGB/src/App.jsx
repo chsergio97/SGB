@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 import Footer from "./components/footer";
 import NavbarMain from "./components/navbarmain";
@@ -14,9 +14,18 @@ import Reservation from "./screens/Reservation/Reservation";
 import Account from "./screens/Account/Account";
 import Settings from "./screens/Settings/Settings";
 
+// Componente para proteger rutas privadas
+function PrivateRoute({ children }) {
+  const token = localStorage.getItem("token");
+  if (!token || token === "undefined") {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+}
+
 function AppContent() {
   const location = useLocation();
-  const pathname = location.pathname.toLowerCase(); // 🔥 Asegura coincidencias en minúscula
+  const pathname = location.pathname.toLowerCase();
 
   const showMainNavbar = pathname === "/";
   const hideNavAndFooter = pathname === "/login" || pathname === "/signup";
@@ -32,17 +41,19 @@ function AppContent() {
       )}
 
       <Routes>
+        {/* Rutas públicas */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/libros" element={<Book />} />
-        <Route path="/reservas" element={<Reservation />} />
-        <Route path="/micuenta" element={<Account />} />
-        <Route path="/configuracion" element={<Settings />} />
+
+        {/* Rutas privadas */}
+        <Route path="/menu" element={<PrivateRoute><Menu /></PrivateRoute>} />
+        <Route path="/libros" element={<PrivateRoute><Book /></PrivateRoute>} />
+        <Route path="/reservas" element={<PrivateRoute><Reservation /></PrivateRoute>} />
+        <Route path="/micuenta" element={<PrivateRoute><Account /></PrivateRoute>} />
+        <Route path="/configuracion" element={<PrivateRoute><Settings /></PrivateRoute>} />
       </Routes>
 
-      {/* 🔥 Footer solo se muestra si no estamos en login/signup */}
       {!hideNavAndFooter && <Footer />}
     </>
   );

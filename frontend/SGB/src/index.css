@@ -1,18 +1,35 @@
-/* --- Estructura base de toda la app --- */
+/* ==================================== */
+/* 1. Base del Documento (Mismo que tenías) */
+/* ==================================== */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* asegura pantalla completa */
+/* ==================================== */
+/* 2. Contenedor Principal (#root o .app-container) */
+/* ==================================== */
+/* Si usas el nuevo div en App.js: */
+.app-container {
+    display: flex;             /* Habilitar Flexbox */
+    flex-direction: column;    /* Apilar verticalmente */
+    min-height: 100vh;         /* Ocupar toda la altura de la ventana */
 }
 
-/* El contenido principal crece y empuja el footer hacia abajo */
-main, .contenido-principal {
-  flex: 1;
+/* O, si prefieres usar el #root de React directamente (si no lo usas para otra cosa): */
+/* #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} */
+
+/* ==================================== */
+/* 3. Contenido Central (El que debe crecer) */
+/* ==================================== */
+.content-wrap {
+    /* ¡CLAVE! Hace que este div crezca y empuje el Footer hacia abajo */
+    flex: 1; 
 }
 
+/* El Footer y las Navbars mantendrán su tamaño natural */
